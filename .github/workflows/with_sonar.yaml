@@ -1,0 +1,19 @@
+name: sonarQube sample
+on:
+    push:
+        branches:
+        - master
+jobs:
+    sonarqube-job:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: checkout
+              uses: actions/checkout@v6
+
+            - name: sonarQube scan
+              uses: sonarsource/sonarqube-scan-action@v2
+              env: 
+               SONAR_TOKEN: ${{ secrets.SONAR_QUBE }}
+               SONAR_HOST_URL: https://sonarcloud.io/
+               
