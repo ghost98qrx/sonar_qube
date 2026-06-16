@@ -16,4 +16,9 @@ jobs:
               env: 
                SONAR_TOKEN: ${{ secrets.SONAR_QUBE }}
                SONAR_HOST_URL: https://sonarcloud.io/
-               
+            - name: Quality Gate Check
+              id: quality_gate
+              uses: sonarsource/sonarqube-quality-gate-action@master
+              timeout-minutes: 5
+              env:
+               SONAR_TOKEN: ${{ secrets.SONAR_QUBE }}
